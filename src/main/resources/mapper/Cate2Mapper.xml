@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mall.mapper.Cate2Mapper">
+
+    <select id="getCate2ListByCate1Id" resultType="com.example.mall.entity.Cate2">
+        SELECT id, name, cate2img
+        FROM cate2
+        WHERE cateid1 = #{cate1Id}
+    </select>
+
+</mapper>
