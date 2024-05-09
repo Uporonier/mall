@@ -54,13 +54,19 @@ public class GoodController {
     @PostMapping(value = "/category" )
     public Result findByCategoryIdWithMinPrice(@RequestParam Integer categoryId) {
         List<Map<String, Object>> goods = goodService.findByCategoryIdWithMinPrice(categoryId);
-        System.out.println("----------------");
-        System.out.println(categoryId);
-        System.out.println(goods);
+//        System.out.println("----------------");
+//        System.out.println(categoryId);
+//        System.out.println(goods);
         return Result.success(goods);
     }
 
-    /**  查询某个id商品的 最低价格  */
+    /** 根据大类 小类查询商品 */
+    @PostMapping(value = "/getcategory/{cate1id}/{cate2id}")
+    public Result findByCateIds(@PathVariable Integer cate1id, @PathVariable Integer cate2id) {
+        List<Map<String, Object>> goods = goodService.findByCateIds(cate1id, cate2id);
+        System.out.println(goods);
+        return Result.success(goods);
+    }
 
 }
 

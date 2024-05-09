@@ -31,4 +31,10 @@ public interface GoodMapper {
             "WHERE g.cateid1 = #{categoryId} ")
     List<Map<String, Object>> findByCategoryIdWithMinPrice(@Param("categoryId") Integer categoryId);
 
+    /**  根据cate1id cate2id 查询*/
+    @Select("SELECT g.* ,(SELECT MIN(price) FROM standard s WHERE s.goodid = g.id) AS min_price " +
+            "FROM good g WHERE cateid1 = #{cateid1} AND cateid2 = #{cateid2}")
+    List<Map<String, Object>> findByCateIds(@Param("cateid1") Integer cateid1, @Param("cateid2") Integer cateid2);
+
+
 }

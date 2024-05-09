@@ -17,11 +17,20 @@ public class StandardController {
 
     @GetMapping("/minprice/{goodid}")
     public Result findMinPriceByGoodid(@PathVariable int goodid) {
-        float minPrice = standardService.findMinPriceByGoodid(goodid);
-        if(minPrice==0)
-        return Result.success(String.valueOf(minPrice));
-        else
+        boolean flag=true;
+        float minPrice =0;
+        try{
+             minPrice = standardService.findMinPriceByGoodid(goodid);
+             flag=true;
+        }
+        catch (Exception e){
             return Result.success("--");
+        }
+        if(flag)
+            return Result.success(String.valueOf(minPrice));
+        else
+            return  Result.success("--");
+
     }
 
 }

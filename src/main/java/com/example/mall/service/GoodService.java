@@ -35,4 +35,9 @@ public class GoodService {
     public List<Map<String, Object>> findByCategoryIdWithMinPrice(Integer categoryId) {
         return goodMapper.findByCategoryIdWithMinPrice(categoryId);
     }
+
+    public List<Map<String, Object>> findByCateIds(Integer cateid1, Integer cateid2) {
+        return goodMapper.findByCateIds(cateid1, cateid2);
+    }
+
 }
