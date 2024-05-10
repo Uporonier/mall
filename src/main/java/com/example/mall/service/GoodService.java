@@ -40,4 +40,21 @@ public class GoodService {
         return goodMapper.findByCateIds(cateid1, cateid2);
     }
 
+    public List<Map<String, Object>> findByCateIdsWithMinPriceAndOrderBy(Integer cateid1, Integer cateid2, String orderBy) {
+        switch (orderBy) {
+            case "total_sales":
+                return goodMapper.findByCateIdsWithMinPriceAndOrderByTotalSales(cateid1, cateid2);
+            case "price":
+                return goodMapper.findByCateIdsWithMinPriceAndOrderByPrice(cateid1, cateid2);
+            case "createtime":
+                return goodMapper.findByCateIdsWithMinPriceAndOrderByCreatetime(cateid1, cateid2);
+            default:
+                // 默认按照创建时间降序排序
+                return goodMapper.findByCateIdsWithMinPriceAndOrderByCreatetime(cateid1, cateid2);
+        }
+    }
+
+    public List<Map<String, Object>> filterByPriceRange(Integer cate1id, Integer cate2id, Double minPrice, Double maxPrice) {
+        return goodMapper.findByCate1idAndCate2idAndPriceBetween(cate1id, cate2id, minPrice, maxPrice);
+    }
 }

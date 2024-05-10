@@ -8,7 +8,9 @@ public class Constants {
     public static final String CODE_401 = "401";//无权限
     public static final String TOKEN_ERROR = "401";//token无效
     public static final String CODE_403 = "403";//拒绝执行
-    //文件存储位置
-//    public static final String fileFolderPath = PathUtils.getClassLoadRootPath() + "/file/";
-//    public static final String avatarFolderPath =  PathUtils.getClassLoadRootPath() + "/avatar/";
+
+//    商品3D模型位置
+    public static final String GoodImg_Prefix="src/main/resources/static/file/good/goodimg";
+//    商品图片位置
+    public static final String GoodModel_Prefix="src/main/resources/static/file/good/model/";
 }

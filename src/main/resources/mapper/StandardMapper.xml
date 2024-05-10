@@ -11,4 +11,10 @@
         WHERE goodid = #{goodid}
     </select>
 
+    <select id="findByGoodId" parameterType="Integer" resultType="com.example.mall.entity.Standard">
+        SELECT * FROM standard WHERE goodid = #{goodId}
+    </select>
 </mapper>
+        <!-- StandardMapper.xml -->
+
+

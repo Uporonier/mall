@@ -1,12 +1,15 @@
 package com.example.mall.controller;
 
 import com.example.mall.common.Result;
+import com.example.mall.entity.Standard;
 import com.example.mall.service.StandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/standard")
@@ -33,4 +36,10 @@ public class StandardController {
 
     }
 
+    //获得商品对应的尺寸
+    @GetMapping("/{goodId}")
+    public Result getStandardsByGoodId(@PathVariable int goodId) {
+        List<Standard> standards = standardService.getStandardsByGoodId(goodId);
+        return Result.success(standards);
+    }
 }

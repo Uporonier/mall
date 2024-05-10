@@ -68,5 +68,20 @@ public class GoodController {
         return Result.success(goods);
     }
 
+
+    @GetMapping("/{cateid1}/{cateid2}")
+    public Result findByCateIdsWithOrderBy(@PathVariable Integer cateid1, @PathVariable Integer cateid2, @RequestParam(required = false, defaultValue = "createtime") String orderBy) {
+        List<Map<String, Object>> goods = goodService.findByCateIdsWithMinPriceAndOrderBy(cateid1, cateid2, orderBy);
+        return Result.success(goods);
+    }
+    @PostMapping("/filter/{cate1id}/{cate2id}/{minPrice}/{maxPrice}")
+    public Result filterGoods(@PathVariable Integer cate1id, @PathVariable Integer cate2id,
+                              @PathVariable Double minPrice, @PathVariable Double maxPrice) {
+        List<Map<String, Object>> filteredGoods = goodService.filterByPriceRange(cate1id, cate2id, minPrice, maxPrice);
+        return Result.success(filteredGoods);
+    }
+
+
+
 }
 
